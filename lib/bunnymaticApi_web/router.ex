@@ -7,10 +7,12 @@ defmodule BunnymaticApiWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug BasicAuth, Application.fetch_env!(:bunnymaticApi, BasicAuth)
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug BasicAuth, Application.fetch_env!(:bunnymaticApi, BasicAuth)
   end
 
   scope "/", BunnymaticApiWeb do

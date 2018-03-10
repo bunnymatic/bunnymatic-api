@@ -55,3 +55,5 @@ config :bunnymaticApi, BunnymaticApi.Repo,
   database: "bunnymaticapi_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :bunnymaticApi, BasicAuth, username: "bunny", password: "matic"
