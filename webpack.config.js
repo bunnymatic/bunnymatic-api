@@ -13,7 +13,6 @@ module.exports = {
     path: path.resolve(__dirname, "./priv/static/"),
   },
   devtool: 'eval-source-map',
-  target: 'node',
   module: {
     rules: [
       {

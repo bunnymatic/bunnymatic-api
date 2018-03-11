@@ -20,6 +20,7 @@ defmodule BunnymaticApiWeb.Router do
 
     get "/", PageController, :index
     get "/images", ImagesController, :index
+    post "/images/upload", ImagesController, :upload
   end
 
   # Other scopes may use custom stacks.

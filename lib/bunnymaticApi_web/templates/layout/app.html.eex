@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>BunnymaticApi</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/app.css") %>">
   </head>
@@ -31,6 +30,7 @@
       </main>
 
     </div> <!-- /container -->
+    <script type="text/javascript">window._csrf = <%= raw Poison.encode!(Plug.CSRFProtection.get_csrf_token()) %>;</script>
     <script src="<%= static_path(@conn, "/app.js") %>"></script>
   </body>
 </html>

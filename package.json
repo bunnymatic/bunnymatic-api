@@ -1,4 +1,8 @@
 {
+  "name": "bunnymatic-api-js",
+  "version": "0.0.1",
+  "description": "Javascript needed for the Bunnymatic API app",
+  "license": "(MIT OR Apache-2.0)",
   "scripts": {
     "watch": "webpack --watch-stdin --progress --color"
   },
