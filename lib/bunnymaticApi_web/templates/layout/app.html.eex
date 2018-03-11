@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello BunnymaticApi!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <title>BunnymaticApi</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/app.css") %>">
   </head>
 
   <body>
@@ -16,7 +16,8 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/images">Images</a></li>
           </ul>
         </nav>
         <span class="logo"></span>
@@ -30,6 +31,6 @@
       </main>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/app.js") %>"></script>
   </body>
 </html>
