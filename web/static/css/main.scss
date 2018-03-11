@@ -1,0 +1,9 @@
+.jumbotron {
+  background-color: rgba(pink, 0.2);
+}
+.row {
+  display: flex;
+  .col {
+    flex: 1;
+  }
+}
