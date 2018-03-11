@@ -12,6 +12,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./priv/static/"),
   },
+  devtool: 'eval-source-map',
+  target: 'node',
   module: {
     rules: [
       {
@@ -19,6 +21,7 @@ module.exports = {
         include: path[
           path.resolve(__dirname, "web/static/js")
         ],
+        exclude: /node_modules/,
         loader: "babel-loader", // options in .babelrc
       },
       {
@@ -26,12 +29,14 @@ module.exports = {
         include: path[
           path.resolve(__dirname, "web/static/css")
         ],
+        exclude: /node_modules/,
         use: extractSass.extract({
           use: [ 'css-loader', 'sass-loader']
         })
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: ['css-loader']
       }
     ]
