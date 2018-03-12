@@ -40,7 +40,12 @@ defmodule BunnymaticApi.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:extus, "~> 0.1.0"},
+      {:poison, "~> 2.0"},
+      {:hackney, "~> 1.6"},
+      {:ex_aws, "~> 2.0"},
+      {:ex_aws_s3, "~> 2.0"}
     ]
   end
 

@@ -4,6 +4,10 @@ const Uppy = require('uppy/lib/core');
 const Tus = require('uppy/lib/plugins/Tus');
 const DragDrop = require('uppy/lib/react/DragDrop');
 
+import configureStore from "../../../store/configureStore";
+
+const store = configureStore({});
+
 const uppy = Uppy({
   meta: {
     type: 'image'
@@ -14,7 +18,7 @@ const uppy = Uppy({
 
 uppy.use(Tus,
          {
-           endpoint: '/images/upload',
+           endpoint: '/images/uploads',
            headers: {
              'X-CSRF-Token': window._csrf
            }
@@ -23,6 +27,7 @@ uppy.use(Tus,
 
 uppy.on('complete', (result) => {
   const url = result.successful[0].uploadURL;
+  console.log("success",result.successful[0]);
   store.dispatch({ type: "images/UPLOAD_COMPLETE", payload: { url: url }});
 });
 

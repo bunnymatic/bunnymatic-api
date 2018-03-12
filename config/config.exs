@@ -22,6 +22,22 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  region: "us-east-2"
+
+config :extus,
+  storage: ExTus.Storage.Local,
+  base_dir: "uploads",
+  expired_after: 24 * 60 * 60 * 1000, # clean incomplete uploads after 1 day
+  clean_interval: 60 * 60 * 1000 # start clean job after 60 minutes
+
+  # if we use ExTus.Storage.S3...
+  # AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are used from the environment
+  # read https://github.com/ex-aws/ex_aws for more info
+
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

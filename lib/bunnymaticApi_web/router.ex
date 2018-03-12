@@ -20,7 +20,17 @@ defmodule BunnymaticApiWeb.Router do
 
     get "/", PageController, :index
     get "/images", ImagesController, :index
-    post "/images/upload", ImagesController, :upload
+    post "/images/uploads", ImageUploadController, :post
+    get "/s3/sign", S3.SignController, :sign
+  end
+
+  scope "/files", BunnymaticApiWeb do
+    options "/",        ImageUploadController, :options
+    options "/:file",     ImageUploadController, :options
+    match :head, "/:file",  ImageUploadController, :head
+    post "/",         ImageUploadController, :post
+    patch "/:file",     ImageUploadController, :patch
+    delete "/:file",      ImageUploadController, :delete
   end
 
   # Other scopes may use custom stacks.

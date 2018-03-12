@@ -13,10 +13,6 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = (dispatch) => {
-  return {
-    onIncrement: () => { dispatch({type: 'INCREMENT'}) },
-    onDecrement: () => { dispatch({type: 'DECREMENT'}) },
-  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
