@@ -1,8 +1,6 @@
 defmodule BunnymaticApiWeb.S3.SignController do
   use BunnymaticApiWeb, :controller
 
-  import Inspector
-
   def render_json(conn, data, http_code) do
     conn
     |> Plug.Conn.put_resp_header("content-type", "application/json; charset=utf-8")
@@ -15,25 +13,24 @@ defmodule BunnymaticApiWeb.S3.SignController do
     opts = [
       {:expires_in, 3600},
       {:virtual_host, false},
-      {:query_params, []}
+      {:query_params, %{ "x-amz-acl": "public-read" }}
     ]
-    object = "/Users/jon/projects/bunnymatic-api/README.ad"
 
     aws_config()
-    |> ExAws.S3.presigned_url(:post, "bunnymatic_dev", object, opts)
+    |> ExAws.S3.presigned_url(
+      :put,
+      Application.get_env(:ex_aws, :bucket),
+      params["filename"], opts )
     |> case do
          {:ok, result} ->
            conn |> render_json(%{url: result})
          {:error, error} ->
-           error |> inspector("presigned_url error")
            conn |> render_json(%{error: error}, 404)
        end
   end
 
   defp aws_config() do
-    [:secret_access_key, :access_key_id, :region]
-    |> Enum.map( fn(key) -> {key, Application.get_env(:ex_aws, key)} end )
-    |> Enum.into( %{} )
-    |> inspector("aws_config")
+    host = "s3." <> Application.get_env(:ex_aws, :region) <> ".amazonaws.com"
+    %{ ExAws.Config.new(:s3) | host: host }
   end
 end

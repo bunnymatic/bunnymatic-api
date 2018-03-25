@@ -22,10 +22,16 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
+config :mime, :types, %{
+  "application/json" => ["json"]
+}
+
 config :ex_aws,
   access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
   secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
-  region: "us-east-2"
+  region: System.get_env("S3_REGION"),
+  bucket: System.get_env("S3_BUCKET")
+
 
 config :extus,
   storage: ExTus.Storage.Local,
@@ -36,6 +42,10 @@ config :extus,
   # if we use ExTus.Storage.S3...
   # AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are used from the environment
   # read https://github.com/ex-aws/ex_aws for more info
+
+config :bunnymaticApi, BasicAuth,
+  username: System.get_env("BASIC_AUTH_USER"),
+  password: System.get_env("BASIC_AUTH_PASS")
 
 
 # Import environment specific config. This must remain at the bottom

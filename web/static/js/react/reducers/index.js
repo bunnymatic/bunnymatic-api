@@ -1,10 +1,8 @@
-export default (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
-    default:
-      return state
-  }
-}
+import { combineReducers } from "redux";
+import imageUploader from "./imageUploader";
+const UppyStore = require('uppy/lib/store/ReduxStore');
+
+export default combineReducers({
+  imageUploader: imageUploader,
+  uppy: UppyStore.reducer
+});

@@ -6,7 +6,7 @@ import configureStore from "./store/configureStore";
 
 import App from './react/components/app.js'
 
-let store = configureStore({});
+const store = configureStore({});
 
 render(
     <Provider store={store}>

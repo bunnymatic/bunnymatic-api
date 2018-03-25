@@ -4,7 +4,7 @@
   "description": "Javascript needed for the Bunnymatic API app",
   "license": "(MIT OR Apache-2.0)",
   "scripts": {
-    "watch": "webpack --watch-stdin --progress --color"
+    "start": "webpack --watch-stdin --progress --color"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -12,6 +12,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "classnames": "^2.2.5",
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.7.2",
@@ -20,6 +21,7 @@
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-form": "^7.3.0",
+    "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
     "sass-loader": "^6.0.7",
     "uppy": "^0.23.2",

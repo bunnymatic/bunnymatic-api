@@ -10,9 +10,19 @@ defmodule BunnymaticApiWeb.Router do
     plug BasicAuth, Application.fetch_env!(:bunnymaticApi, BasicAuth)
   end
 
+  pipeline :s3 do
+    plug :accepts, ["json"]
+    plug BasicAuth, Application.fetch_env!(:bunnymaticApi, BasicAuth)
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
     plug BasicAuth, Application.fetch_env!(:bunnymaticApi, BasicAuth)
+  end
+
+  scope "/s3", BunnymaticApiWeb do
+    pipe_through :s3
+    post "/sign", S3.SignController, :sign
   end
 
   scope "/", BunnymaticApiWeb do
@@ -21,17 +31,16 @@ defmodule BunnymaticApiWeb.Router do
     get "/", PageController, :index
     get "/images", ImagesController, :index
     post "/images/uploads", ImageUploadController, :post
-    get "/s3/sign", S3.SignController, :sign
   end
 
-  scope "/files", BunnymaticApiWeb do
-    options "/",        ImageUploadController, :options
-    options "/:file",     ImageUploadController, :options
-    match :head, "/:file",  ImageUploadController, :head
-    post "/",         ImageUploadController, :post
-    patch "/:file",     ImageUploadController, :patch
-    delete "/:file",      ImageUploadController, :delete
-  end
+  # scope "/files", BunnymaticApiWeb do
+  #   options "/",        ImageUploadController, :options
+  #   options "/:file",     ImageUploadController, :options
+  #   match :head, "/:file",  ImageUploadController, :head
+  #   post "/",         ImageUploadController, :post
+  #   patch "/:file",     ImageUploadController, :patch
+  #   delete "/:file",      ImageUploadController, :delete
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", BunnymaticApiWeb do

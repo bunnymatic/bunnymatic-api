@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 
 import ImageUploader from './imageUploader/ImageUploader.js';
 
-const App = (props) => {
-    return <ImageUploader {...props} />
+const App = () => {
+    return <ImageUploader />
 };
 
-const mapStateToProps = (state) => {
-  return {
-    value: state
-  }
-}
-const mapDispatchToProps = (dispatch) => {
-}
+App.contextTypes = { store: PropTypes.object };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App;
