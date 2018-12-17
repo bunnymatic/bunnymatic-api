@@ -1,3 +1,5 @@
+/* global: ReduxStore:true Uppy:true */
+/* eslint no-unused-vars: 0 */
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import reducers from "../react/reducers";
@@ -7,15 +9,11 @@ import Uppy from "uppy/lib/core";
 export default function configureStore(initialState) {
   const middlewares = [thunk];
 
-  const { createLogger } = require('redux-logger');
+  const { createLogger } = require("redux-logger");
   middlewares.push(createLogger());
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  const store = createStore(
-    reducers,
-    initialState,
-    composeEnhancers(applyMiddleware(...middlewares))
-  );
+  const store = createStore(reducers, initialState, composeEnhancers(applyMiddleware(...middlewares)));
 
   return store;
 }
