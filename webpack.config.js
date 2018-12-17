@@ -1,13 +1,13 @@
 const path = require("path");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const extractSass = new ExtractTextPlugin({
+const extractSass = new MiniCssExtractPlugin({
   filename: '[name].css'
 });
 
 module.exports = {
   entry: {
-    app: [ "./web/static/js/app.js", "./web/static/css/app.scss" ]
+    app: [ "./web/static/js/app.jsx", "./web/static/css/app.scss" ]
   },
   output: {
     path: path.resolve(__dirname, "./priv/static/"),
@@ -16,10 +16,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         include: path[
           path.resolve(__dirname, "web/static/js")
         ],
+        resolve: {
+          extensions: [".js", ".jsx"]
+        },
         exclude: /node_modules/,
         loader: "babel-loader", // options in .babelrc
       },
@@ -29,14 +32,25 @@ module.exports = {
           path.resolve(__dirname, "web/static/css")
         ],
         exclude: /node_modules/,
-        use: extractSass.extract({
-          use: [ 'css-loader', 'sass-loader']
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'sass-loader',
+          'postcss-loader'
+        ]
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['css-loader']
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'postcss-loader'
+        ]
       }
     ]
   },

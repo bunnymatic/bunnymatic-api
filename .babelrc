@@ -1,6 +1,5 @@
 {
   "presets": [
-    "es2015",
     ["env", {
       "modules": false,
       "targets": {
@@ -9,6 +8,7 @@
       "useBuiltIns": true
     }],
     "react",
+    "airbnb"
   ],
   "plugins": [
     "syntax-dynamic-import",

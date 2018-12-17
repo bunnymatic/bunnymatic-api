@@ -1,3 +1,6 @@
 @import "~uppy/dist/uppy.min.css";
-@import "./main.scss";
-@import "./spinner.scss";
+@import "buttons";
+@import "colors";
+@import "./navigation";
+@import "./main";
+@import "./spinner";

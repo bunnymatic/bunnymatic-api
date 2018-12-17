@@ -1,0 +1,57 @@
+@import "../../../../css/colors";
+@import "../../../../css/media_query_responders";
+
+@mixin justified-flex-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-bottom: 2px;
+}
+
+@mixin flex-row-value {
+  flex-basis: 100%;
+  text-align: right;
+  font-size: inherit;
+  margin-left: 5px;
+  border-top-left-radius: 8px;
+}
+
+@mixin flex-row-label {
+  text-align: left;
+  font-size: small;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@mixin image-card {
+  border: 1px solid $gray-cc;
+  margin: 10px 10px 20px;
+}
+
+@mixin image-card--inner {
+  padding: 20px;
+}
+
+@mixin image-card-grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template: auto / repeat(1, 1fr);
+  @include respond_above(xs) {
+    grid-template: auto / repeat(2, 1fr);
+  }
+
+  @include respond_above(sm) {
+    grid-template: auto / repeat(3, 1fr);
+  }
+
+  @include respond_above(md) {
+    grid-template: auto / repeat(4, 1fr);
+  }
+}
+
+@mixin image-card-image {
+  max-height: 200px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}

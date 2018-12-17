@@ -1,0 +1,6 @@
+@import "../shared/mixins";
+
+.image-uploader {
+  @include image-card;
+  border: none;
+}
