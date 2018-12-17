@@ -19,3 +19,23 @@ env.sh
 # secrets files as long as you replace their contents by environment
 # variables.
 /config/*.secret.exs
+
+# Generated on crash by NPM
+npm-debug.log
+
+# Static artifacts
+/assets/node_modules
+
+# Since we are building assets from assets/,
+# we ignore priv/static. You may want to comment
+# this depending on your deployment strategy.
+/priv/static/
+
+node_modules
+
+.DS_Store
+
+uploads
+
+upload_cache.tab
+webpack.analysis.json

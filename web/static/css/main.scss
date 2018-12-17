@@ -1,9 +1,21 @@
-.jumbotron {
-  background-color: rgba(pink, 0.2);
+html *, body {
+  font-family: 'Work Sans', sans-serif;
 }
-.row {
-  display: flex;
-  .col {
-    flex: 1;
-  }
+
+body {
+  margin: 0;
 }
+.container {
+  margin: 0;
+  padding: 0;
+}
+header, main {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* .row { */
+/*   display: flex; */
+/*   .col { */
+/*     flex: 1; */
+/*   } */
+/* } */

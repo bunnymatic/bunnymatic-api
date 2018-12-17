@@ -1,0 +1,30 @@
+@import "../shared/mixins";
+@import "../../../../css/colors";
+
+.art-form__row {
+  @include justified-flex-row;
+}
+
+.art-form__rows {
+  margin-bottom: 10px;
+}
+
+.art-form__input__label {
+  @include flex-row-label;
+}
+
+.art-form__input__value {
+  @include flex-row-value;
+  border: 0;
+  background-color: $input-background;
+}
+
+.art-form__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.art-form__action + .art-form__action {
+  margin-left: 4px;
+}

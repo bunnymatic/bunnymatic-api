@@ -20,6 +20,7 @@ defmodule BunnymaticApiWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       import BunnymaticApiWeb.Router.Helpers
+      import BunnymaticApi.Factory
 
       # The default endpoint for testing
       @endpoint BunnymaticApiWeb.Endpoint

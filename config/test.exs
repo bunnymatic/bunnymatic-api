@@ -17,3 +17,7 @@ config :bunnymaticApi, BunnymaticApi.Repo,
   database: "bunnymaticapi_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :bunnymaticApi, BasicAuth,
+  username: "basic_test_user",
+  password: "basic_test_password"

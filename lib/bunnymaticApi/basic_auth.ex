@@ -1,15 +1,12 @@
 defmodule BasicAuth do
   import Plug.Conn
-
-  import Inspector
-
+  require Logger
   @realm "Basic realm=\"Bunnymatic API\""
 
   def init(opts), do: opts
 
   def call(conn, correct_auth) do
-    correct_auth |> inspector
-    case get_req_header(conn, "authorization") |> inspector("get_req_header") do
+    case get_req_header(conn, "authorization") do
       ["Basic " <> attempted_auth] -> verify(conn, attempted_auth, correct_auth)
       _ -> unauthorized(conn)
     end
@@ -22,7 +19,10 @@ defmodule BasicAuth do
     end
   end
 
-  def encode(username, password), do: Base.encode64(username <> ":" <> password)
+  def encode(username, password) do
+    Logger.debug("BasicAuth: Trying #{username}/#{password}")
+    Base.encode64(username <> ":" <> password)
+  end
 
   def unauthorized(conn) do
     conn

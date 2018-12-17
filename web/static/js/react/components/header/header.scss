@@ -1,0 +1,10 @@
+@import "../../../../css/colors";
+.header {
+  font-size: 14px;
+  line-height: 28px;
+  background-color: $gray-4a;
+  color: $white;
+}
+.header__item {
+  text-transform: uppercase;
+}
