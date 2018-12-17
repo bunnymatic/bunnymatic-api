@@ -62,7 +62,7 @@ class AddArtForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.imageUploader.loading,
+  isLoading: state.imageUploader.isLoading,
   uploadedFiles: state.imageUploader.uploadedFiles,
   form: state.form,
 });

@@ -6,10 +6,10 @@
   "scripts": {
     "lint": "yarn eslint-lint && yarn prettier-lint",
     "lint-fix": "yarn eslint-fix && yarn prettier-fix",
-    "eslint-lint": "eslint web/static/**/*.{es6,js,jsx}",
-    "eslint-fix": "eslint --fix web/static/**/*.{es6,js,jsx}",
-    "prettier-fix": "prettier --write 'web/static/**/*.{es6,js,jsx}' 'web/static/**/*.scss' '**/*.json'",
-    "prettier-lint": "prettier --list-different 'web/static/**/*.{es6,js,jsx}' 'web/static/**/*.scss' '**/*.json'",
+    "eslint-lint": "eslint web/static/**/*.{js,jsx}",
+    "eslint-fix": "eslint --fix web/static/**/*.{js,jsx}",
+    "prettier-fix": "prettier --write 'web/static/**/*.{js,jsx}' 'web/static/**/*.scss' '**/*.json'",
+    "prettier-lint": "prettier --list-different 'web/static/**/*.{js,jsx}' 'web/static/**/*.scss' '**/*.json'",
     "start": "webpack --watch-stdin --progress --color",
     "test": "jest"
   },
@@ -38,8 +38,9 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint-config-prettier": "^3.3.0",
-    "eslint-config-react": "^1.1.7",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-react": "^7.11.1",
@@ -73,5 +74,8 @@
       "web/static/js"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/jestConfig.js"
+  },
+  "peerDependencies": {
+    "eslint": "^5.10.0"
   }
 }

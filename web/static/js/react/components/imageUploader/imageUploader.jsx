@@ -85,8 +85,8 @@ class ImageUploader extends Component {
   };
 
   render() {
-    if (this.props.loading) {
-      return <div className={classnames("spinner", { "spinner--active": this.props.loading })} />;
+    if (this.props.isLoading) {
+      return <div className={classnames("spinner", { "spinner--active": this.props.isLoading })} />;
     } else {
       return (
         <div className="image-uploader">
@@ -99,7 +99,7 @@ class ImageUploader extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.imageUploader.loading,
+    isLoading: state.imageUploader.isLoading,
     uploadedFiles: state.imageUploader.uploadedFiles,
   };
 };

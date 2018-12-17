@@ -109,7 +109,7 @@ class ImageList extends Component {
 }
 
 const mapStateToProps = state => {
-  return pick(state.images, "loading", "uploaded", "editing");
+  return pick(state.images, "isLoading", "uploaded", "editing");
 };
 
 const mapDispatchToProps = dispatch => {
