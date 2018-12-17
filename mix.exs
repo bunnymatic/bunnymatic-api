@@ -20,7 +20,10 @@ defmodule BunnymaticApi.Mixfile do
   def application do
     [
       mod: {BunnymaticApi.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [
+        :logger,
+        :runtime_tools
+      ]
     ]
   end
 
@@ -45,7 +48,8 @@ defmodule BunnymaticApi.Mixfile do
       {:poison, "~> 2.0"},
       {:hackney, "~> 1.6"},
       {:ex_aws, "~> 2.0"},
-      {:ex_aws_s3, "~> 2.0"}
+      {:ex_aws_s3, "~> 2.0"},
+      {:ex_machina, "~> 2.2", only: :test}
     ]
   end
 

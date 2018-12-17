@@ -28,22 +28,17 @@ defmodule BunnymaticApiWeb.Router do
   scope "/", BunnymaticApiWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-    get "/images", ImagesController, :index
+    get "/", ImagesController, :index
     post "/images/uploads", ImageUploadController, :post
   end
 
-  # scope "/files", BunnymaticApiWeb do
-  #   options "/",        ImageUploadController, :options
-  #   options "/:file",     ImageUploadController, :options
-  #   match :head, "/:file",  ImageUploadController, :head
-  #   post "/",         ImageUploadController, :post
-  #   patch "/:file",     ImageUploadController, :patch
-  #   delete "/:file",      ImageUploadController, :delete
-  # end
-
   # Other scopes may use custom stacks.
-  # scope "/api", BunnymaticApiWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", BunnymaticApiWeb do
+    pipe_through :api
+
+    get "/images", Api.ImagesController, :index
+    post "/images", Api.ImagesController, :create
+    put "/images/:id", Api.ImagesController, :update
+    delete "/images/:id", Api.ImagesController, :destroy
+  end
 end
