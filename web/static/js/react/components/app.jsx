@@ -1,15 +1,15 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import Header from "./header/header";
 import ImageList from "./imageList/imageList";
-import AddArtForm from './addArtForm/addArtForm';
+import AddArtForm from "./addArtForm/addArtForm";
 
 const App = () => {
   return (
     <Fragment>
-      <Header/>
+      <Header />
       <main role="main">
         <AddArtForm />
         <ImageList />
