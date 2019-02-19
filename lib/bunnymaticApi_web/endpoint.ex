@@ -1,7 +1,8 @@
 defmodule BunnymaticApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :bunnymaticApi
 
-  socket "/socket", BunnymaticApiWeb.UserSocket
+  socket "/socket", BunnymaticApiWeb.UserSocket,
+    websocket: true
 
   # Serve at "/" the static files from "priv/static" directory.
   #

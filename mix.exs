@@ -36,20 +36,23 @@ defmodule BunnymaticApi.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.2"},
+      {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.7"},
+      {:phoenix, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:gettext, "~> 0.16"},
       {:extus, "~> 0.1.0"},
-      {:poison, "~> 2.0"},
-      {:hackney, "~> 1.6"},
-      {:ex_aws, "~> 2.0"},
-      {:ex_aws_s3, "~> 2.0"},
-      {:ex_machina, "~> 2.2", only: :test}
+      {:poison, "~> 3.0"},
+      {:hackney, "~> 1.15"},
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~> 2.0.1"},
+      {:sweet_xml, "~> 0.6"},
+      {:ex_machina, "~> 2.2.2", only: :test}
     ]
   end
 
@@ -63,7 +66,7 @@ defmodule BunnymaticApi.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end
