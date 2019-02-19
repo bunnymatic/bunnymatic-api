@@ -12,8 +12,6 @@ import {
   onSubmittingArt,
 } from "../actions/images";
 
-import { objectContaining } from "expect";
-
 const defaultState = {
   isLoading: false,
   uploaded: {},
