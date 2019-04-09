@@ -19,7 +19,11 @@ export default class UppyWrapper {
       .on("complete", eventCallbacks.complete || (() => {}));
   }
 
-  run = () => this.uppy.run();
+  run() {
+    return this.uppy.run();
+  }
 
-  close = () => this.uppy.close();
+  close() {
+    return this.uppy.close();
+  }
 }

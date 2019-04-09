@@ -28,11 +28,9 @@ class ImageUploader extends Component {
     const getUploadParameters = this.getUploadParameters;
 
     const { store } = this.context;
-
     this.uppyWrapper = new UppyWrapper(store, host, getUploadParameters, {
       upload: data => store.dispatch(onUpload(data)),
-      uploadSuccess: (fileId, data, uploadUrl) => {
-        const file = this.uppyWrapper.uppy.getFile(fileId);
+      uploadSuccess: (_fileId, data, _uploadUrl) => {
         const url = data.location.split("?")[0];
         store.dispatch(onUploadSuccess({ location: url }));
       },

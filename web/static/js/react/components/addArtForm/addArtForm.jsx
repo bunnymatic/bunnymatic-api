@@ -20,10 +20,9 @@ import {
 const host = "http://localhost:4000";
 
 class AddArtForm extends Component {
-
   static propTypes = {
-    uploadedFiles: PropTypes.arrayOf(PropTypes.string).isRequired
-  }
+    uploadedFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  };
 
   constructor(props) {
     super(props);
