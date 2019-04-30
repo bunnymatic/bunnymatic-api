@@ -1,8 +1,8 @@
-const mockStore = (defaultState) => {
+const mockStore = defaultState => {
   return {
-    getState: () => (defaultState),
+    getState: () => defaultState,
     subscribe: () => {},
     dispatch: () => {},
   };
-}
+};
 export default mockStore;
