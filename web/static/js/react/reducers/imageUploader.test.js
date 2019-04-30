@@ -1,5 +1,8 @@
+import DragDrop from "uppy/lib/react/DragDrop";
 import reducer from "./imageUploader";
 import { onUpload, onUploadSuccess, onAddArtSuccess } from "../actions/images";
+
+jest.mock("uppy/lib/react/DragDrop");
 
 const defaultState = {
   isLoading: false,

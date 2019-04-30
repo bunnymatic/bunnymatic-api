@@ -1,9 +1,4 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { shallow, mount } from "enzyme";
 import UppyWrapper from "./uppyWrapper";
-import Uppy from "uppy/lib/core";
-import ReduxStore from "uppy/lib/store/ReduxStore";
 
 jest.mock("uppy/lib/store/ReduxStore");
 
@@ -29,10 +24,6 @@ jest.mock("uppy/lib/core", () => {
 });
 
 describe("uppyWrapper", () => {
-  const requiredProps = {
-    uploadedFiles: [],
-  };
-
   const setup = () => {
     const host = "host";
     const store = "store";
@@ -42,8 +33,6 @@ describe("uppyWrapper", () => {
       service: new UppyWrapper(host, store, getUploadParams, callbacks),
     };
   };
-  let wrapper;
-
   it("sets up a bunch of stuff on the Uppy object", () => {
     const { service } = setup();
     service.run();
