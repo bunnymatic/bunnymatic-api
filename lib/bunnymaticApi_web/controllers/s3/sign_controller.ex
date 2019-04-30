@@ -7,7 +7,7 @@ defmodule BunnymaticApiWeb.S3.SignController do
     opts = [
       {:expires_in, 3600},
       {:virtual_host, false},
-      {:query_params, %{ "x-amz-acl": "public-read" }}
+      {:query_params, [ "x-amz-acl": "public-read"] }
     ]
 
     S3.config()

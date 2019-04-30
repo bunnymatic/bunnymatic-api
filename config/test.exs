@@ -11,7 +11,6 @@ config :logger, level: :warn
 
 # Configure your database
 config :bunnymaticApi, BunnymaticApi.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "bunnymaticapi_test",

@@ -6,12 +6,13 @@
   "scripts": {
     "lint": "yarn eslint-lint && yarn prettier-lint",
     "lint-fix": "yarn eslint-fix && yarn prettier-fix",
-    "eslint-lint": "eslint web/static/**/*.{es6,js,jsx}",
-    "eslint-fix": "eslint --fix web/static/**/*.{es6,js,jsx}",
-    "prettier-fix": "prettier --write 'web/static/**/*.{es6,js,jsx}' 'web/static/**/*.scss' '**/*.json'",
-    "prettier-lint": "prettier --list-different 'web/static/**/*.{es6,js,jsx}' 'web/static/**/*.scss' '**/*.json'",
+    "eslint-lint": "eslint web/static/**/*.{js,jsx}",
+    "eslint-fix": "eslint --fix web/static/**/*.{js,jsx}",
+    "prettier-fix": "prettier --write 'web/static/**/*.{js,jsx}' 'web/static/**/*.scss' '**/*.json'",
+    "prettier-lint": "prettier --list-different 'web/static/**/*.{js,jsx}' 'web/static/**/*.scss' '**/*.json'",
     "start": "webpack --watch-stdin --progress --color",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "webpack --mode production"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -38,16 +39,20 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "eslint": "^5.12.0",
     "eslint-config-prettier": "^3.3.0",
-    "eslint-config-react": "^1.1.7",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "faker": "^4.1.0",
     "fsevents": "^1.2.0",
     "jest": "^23.6.0",
     "node-sass": "^4.7.2",
     "postcss-loader": "^3.0.0",
     "prettier-eslint": "^8.8.2",
+    "rosie": "^2.0.1",
     "sass-loader": "^6.0.7",
     "webpack": "^4.1.1",
     "webpack-cli": "^3.0.0"
@@ -66,12 +71,15 @@
     ],
     "testURL": "https://www.example.com",
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|svg|ttf|woff|woff2)$": "<rootDir>/__jest_mocks__/fileMock.js",
-      "\\.(scss|less)$": "<rootDir>/__jest_mocks__/styleMock.js"
+      "\\.(jpg|jpeg|png|gif|svg|ttf|woff|woff2)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(scss|less)$": "<rootDir>/__mocks__/styleMock.js"
     },
     "roots": [
       "web/static/js"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/jestConfig.js"
+  },
+  "peerDependencies": {
+    "eslint": "^5.10.0"
   }
 }

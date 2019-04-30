@@ -1,5 +1,5 @@
 defmodule BunnymaticApi.Repo do
-  use Ecto.Repo, otp_app: :bunnymaticApi
+  use Ecto.Repo, otp_app: :bunnymaticApi, adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the

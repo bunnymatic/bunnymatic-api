@@ -49,7 +49,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :bunnymaticApi, BunnymaticApi.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "bunnymaticapi_dev",

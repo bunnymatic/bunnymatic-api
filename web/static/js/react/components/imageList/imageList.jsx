@@ -5,16 +5,20 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { isEmpty, map, pick } from "lodash";
 
+import { ImageType } from "../../shared/types";
 import ArtForm from "../artForm/artForm";
 import { fetchArt, onDeleteArt, onEditArt, onUpdateArt } from "../../actions/images";
 
 import "./imageList.scss";
 
 class ImageList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  static propTypes = {
+    uploaded: PropTypes.objectOf(ImageType),
+    fetchArt: PropTypes.func.isRequired,
+    onDeleteArt: PropTypes.func.isRequired,
+    onEditArt: PropTypes.func.isRequired,
+    onUpdateArt: PropTypes.func.isRequired,
+  };
   componentDidMount() {
     this.props.fetchArt();
   }
@@ -75,6 +79,7 @@ class ImageList extends Component {
   renderArt = () => {
     const { uploaded } = this.props;
     const ids = Object.keys(uploaded).sort((a, b) => b - a);
+
     return ids.map(id => {
       const image = uploaded[id];
       return (
@@ -109,7 +114,7 @@ class ImageList extends Component {
 }
 
 const mapStateToProps = state => {
-  return pick(state.images, "loading", "uploaded", "editing");
+  return pick(state.images, "isLoading", "uploaded", "editing");
 };
 
 const mapDispatchToProps = dispatch => {

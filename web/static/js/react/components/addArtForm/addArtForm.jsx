@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import classnames from "classnames";
-import Uppy from "uppy/lib/core";
-import AwsS3 from "uppy/lib/plugins/AwsS3";
-import DragDrop from "uppy/lib/react/DragDrop";
-import ReduxStore from "uppy/lib/store/ReduxStore";
 import ArtForm from "../artForm/artForm";
 import ImageUploader from "../imageUploader/imageUploader";
 
@@ -24,6 +20,10 @@ import {
 const host = "http://localhost:4000";
 
 class AddArtForm extends Component {
+  static propTypes = {
+    uploadedFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +62,7 @@ class AddArtForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.imageUploader.loading,
+  isLoading: state.imageUploader.isLoading,
   uploadedFiles: state.imageUploader.uploadedFiles,
   form: state.form,
 });
