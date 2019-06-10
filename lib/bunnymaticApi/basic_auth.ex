@@ -13,6 +13,7 @@ defmodule BasicAuth do
   end
 
   defp verify(conn, attempted_auth, [username: username, password: password]) do
+    Logger.debug("BasicAuth: Verifty #{attempted_auth} #{username}/#{password}")
     case encode(username, password) do
       ^attempted_auth -> conn
       _ -> unauthorized(conn)

@@ -1,18 +1,19 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "modules": false,
       "targets": {
         "browsers": "> 1%"
       },
-      "useBuiltIns": true
+      "useBuiltIns": 'usage',
+      "corejs": 3
     }],
-    "react",
+    "@babel/preset-react",
     "airbnb"
   ],
   "plugins": [
-    "syntax-dynamic-import",
-    "transform-object-rest-spread",
-    ["transform-class-properties", { "spec": true }]
+    "@babel/syntax-dynamic-import",
+    "@babel/proposal-object-rest-spread",
+    ["@babel/proposal-class-properties", { "spec": true }]
   ]
 }

@@ -4,10 +4,10 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import classnames from "classnames";
 
-import Uppy from "uppy/lib/core";
-import AwsS3 from "uppy/lib/plugins/AwsS3";
-import DragDrop from "uppy/lib/react/DragDrop";
-import ReduxStore from "uppy/lib/store/ReduxStore";
+import Uppy from "@uppy/core";
+import AwsS3 from "@uppy/aws-s3";
+import { DragDrop } from "@uppy/react";
+import ReduxStore from "@uppy/store-redux";
 
 import { onUpload, onUploadSuccess, onUploadError } from "../../actions/images";
 import "./ImageUploader.scss";
@@ -52,13 +52,13 @@ class ImageUploader extends Component {
         // file: { id, name, type, ... }
         // progress: { uploader, bytesUploaded, bytesTotal }
       })
-      .on("upload-success", (fileId, data, uploadUrl) => {
-        const file = uppy.getFile(fileId);
-        const url = data.location.split("?")[0];
+      .on("upload-success", (_file, response) => {
+        // const file = uppy.getFile(file.id);
+        const url = response.uploadURL.split("?")[0];
         store.dispatch(onUploadSuccess({ location: url }));
       })
-      .on("upload-error", (_file, _error) => {
-        store.dispatch(onUploadError({ location: url }));
+      .on("upload-error", (_file, error, _response) => {
+        store.dispatch(onUploadError({ error }));
       })
       .on("complete", _result => {})
       .run();

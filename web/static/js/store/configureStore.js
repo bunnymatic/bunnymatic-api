@@ -3,8 +3,8 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import reducers from "../react/reducers";
-import ReduxStore from "uppy/lib/store/ReduxStore";
-import Uppy from "uppy/lib/core";
+import ReduxStore from "@uppy/store-redux";
+import Uppy from "@uppy/core";
 
 export default function configureStore(initialState) {
   const middlewares = [thunk];

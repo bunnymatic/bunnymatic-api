@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import classnames from "classnames";
-import Uppy from "uppy/lib/core";
-import AwsS3 from "uppy/lib/plugins/AwsS3";
-import DragDrop from "uppy/lib/react/DragDrop";
-import ReduxStore from "uppy/lib/store/ReduxStore";
+import Uppy from "@uppy/core";
+import AwsS3 from "@uppy/aws-s3";
+import { DragDrop } from "@uppy/react";
+import ReduxStore from "@uppy/store-redux";
 import ArtForm from "../artForm/artForm";
 import ImageUploader from "../imageUploader/imageUploader";
 
