@@ -7,7 +7,7 @@ defmodule BasicAuth do
 
   def call(conn, correct_auth) do
     case get_req_header(conn, "authorization") do
-      ["Basic " <> attempted_auth] -> verify(conn, attempted_auth, correct_auth)
+      ["Basic " <> attempted_auth] -> verify(conn, attempted_auth, correct_auth |> stringify_nil_values)
       _ -> unauthorized(conn)
     end
   end
@@ -29,5 +29,9 @@ defmodule BasicAuth do
     |> put_resp_header("www-authenticate", @realm)
     |> send_resp(401, "Unauthorized")
     |> halt()
+  end
+
+  defp stringify_nil_values(keyword_list) do
+    keyword_list |> Enum.map( fn {k,v} -> {k, v || ""} end)
   end
 end
