@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { isEmpty, map, pick } from "lodash";
-
+import { TiEdit, TiTrash } from 'react-icons/ti'
 import { ImageType } from "../../shared/types";
 import ArtForm from "../artForm/artForm";
 import { fetchArt, onDeleteArt, onEditArt, onUpdateArt } from "../../actions/images";
@@ -86,10 +86,15 @@ class ImageList extends Component {
         <li className="image-list__item-wrapper" key={id}>
           <header className="image-list__item-header">
             <button title="edit" className="image-list__edit image-list__action" onClick={this.handleEdit(id)}>
-              <ion-icon name="create" />
+              <TiEdit />
             </button>
-            <button title="delete" className="image-list__delete image-list__action" onClick={this.handleDelete(id)}>
-              <ion-icon name="close-circle-outline" />
+            <button
+              title="delete"
+              className="image-list__delete image-list__action"
+              disabled={this.isEditing}
+              onClick={this.handleDelete(id)}
+            >
+              <TiTrash />              
             </button>
           </header>
           <div className="image-list__item">

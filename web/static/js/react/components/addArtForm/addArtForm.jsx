@@ -32,6 +32,7 @@ class AddArtForm extends Component {
   }
 
   onSubmit = formValues => {
+    console.log('formValues');
     this.props.onAddArt(formValues);
   };
 

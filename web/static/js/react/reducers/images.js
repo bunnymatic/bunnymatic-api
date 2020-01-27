@@ -38,6 +38,7 @@ export default (state = defaultState, action) => {
         memo[image.id] = image;
         return memo;
       }, {});
+      console.log(state.uploaded, imagesKeyedById)
       const uploaded = { ...state.uploaded, ...imagesKeyedById };
       return mergeDeepRight(state, { isLoading: false, uploaded });
     }
