@@ -10,8 +10,8 @@ import {
   UPDATE_ART_ERROR,
   SUBMITTING_ART,
 } from "../actions/images";
-import { mergeDeepRight } from "ramda";
-import { omit } from "lodash";
+import { mergeDeepRight, mergeRight } from "ramda";
+import omit from "lodash/omit";
 
 const defaultState = {
   isLoading: false,
@@ -32,15 +32,18 @@ export default (state = defaultState, action) => {
       return mergeDeepRight(state, { isLoading: false, errors: [], uploaded: { [image.id]: image } });
     case DELETE_ART_SUCCESS:
       image = action.data.image;
-      return mergeDeepRight(state, { isLoading: false, errors: [], uploaded: omit(state.uploaded, image.id) });
+      const newImages = omit(state.uploaded, image.id)
+      return mergeRight(state, {
+        isLoading: false,
+        errors: [],
+        uploaded: newImages,
+      });
     case FETCH_ART_SUCCESS: {
       const imagesKeyedById = action.data.images.reduce((memo, image) => {
         memo[image.id] = image;
         return memo;
       }, {});
-      console.log(state.uploaded, imagesKeyedById)
-      const uploaded = { ...state.uploaded, ...imagesKeyedById };
-      return mergeDeepRight(state, { isLoading: false, uploaded });
+      return mergeDeepRight(state, { isLoading: false, uploaded: imagesKeyedById });
     }
     case UPDATE_ART_SUCCESS:
       image = action.data.image;
