@@ -19,6 +19,10 @@ defmodule BunnymaticApi.S3 do
   def config do
     bucket = Application.get_env(:ex_aws, :bucket)
     region = Application.get_env(:ex_aws, :region)
+    IO.puts("REGION")
+    IO.inspect(region)
+    IO.puts("BUCKET")
+    IO.inspect(bucket)
     host = "s3." <> region <> ".amazonaws.com"
 
     ExAws.Config.new(:s3)

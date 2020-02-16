@@ -26,11 +26,19 @@ config :mime, :types, %{
   "application/json" => ["json"]
 }
 
-config :ex_aws,
+aws_config = [
   access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
   secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
   region: System.get_env("S3_REGION"),
   bucket: System.get_env("S3_BUCKET")
+]
+if (!(aws_config |> Enum.all?( fn {_k,v} -> v end ))) do
+  raise("""
+        You must set all the AWS keys via environment variables:
+        AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY_ID, S3_REGION, and S3_BUCKET
+        """)
+end
+config :ex_aws, aws_config
 
 
 config :extus,

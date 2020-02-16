@@ -1,5 +1,3 @@
-import { reset } from "redux-form";
-
 export const UPLOAD_ERROR = "images/UPLOAD_ERROR";
 export const UPLOAD_SUCCESS = "images/UPLOAD_SUCCESS";
 export const UPLOAD = "images/UPLOAD";
@@ -91,7 +89,6 @@ export const onAddArt = data => {
     post(url, { image: data })
       .then(response => response.json())
       .then(result => dispatch(onAddArtSuccess(result)))
-      .then(_result => dispatch(reset("AddArtForm")))
       .catch(error => dispatch(onAddArtError(error)));
   };
 };

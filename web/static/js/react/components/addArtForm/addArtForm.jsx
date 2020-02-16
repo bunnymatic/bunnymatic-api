@@ -38,10 +38,10 @@ class AddArtForm extends Component {
   parameterize = s => s.replace(/[^\w\s]|_/g, " ").replace(/\s+/g, "-");
 
   renderForms() {
-    return this.props.uploadedFiles.map(file => {
+    return this.props.uploadedFiles.map((file, idx) => {
       const fileKey = this.parameterize(file);
       return (
-        <div className="add-art">
+        <div className="add-art" key={`add-art-form-${idx}`}>
           <div className="add-art__item">
             <img className="add-art__item__uploaded-image" src={file} />
             <ArtForm key={fileKey} form={`AddArtForm-${fileKey}`} initialValues={{ file }} onSubmit={this.onSubmit} />
